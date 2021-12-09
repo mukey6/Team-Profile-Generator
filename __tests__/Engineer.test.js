@@ -9,7 +9,7 @@ describe('an Engineer', () =>{
     }
 const engineer = new Engineer(engineerProperty)
 
-Test('will have engineers name Muktar', () =>{
+test('will have engineers name Muktar', () =>{
     expect(engineer.name).toBe('Muktar')
 })
 
