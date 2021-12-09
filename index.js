@@ -1,3 +1,3 @@
-const fs = require('fs/promises')
+// const fs = require('fs/promises')
 
 // await fs.writeFile(locationofFile, dataInput, )
