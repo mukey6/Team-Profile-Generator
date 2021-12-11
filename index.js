@@ -32,6 +32,8 @@ async function writeToFile(fileName, data) {
     }
   }
 
+  
+
 async function myTeamInfo() {
   const questions = [
     {
@@ -44,36 +46,36 @@ async function myTeamInfo() {
       name: "managerEmail",
       message: "What is the managers Email?",
     },
-    // {
-    //   type: "input",
-    //   name: "managerId",
-    //   message: "What is the managers employee ID?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "managerOffice",
-    //   message: "What is the managers office number?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "engineerName",
-    //   message: "What is the engineers name?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "engineerEmail",
-    //   message: "What is the engineers Email?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "engineerId",
-    //   message: "What is the engineers employee ID?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "engineerGitHub",
-    //   message: "What is the engineers GitHub username?",
-    // },
+    {
+      type: "input",
+      name: "managerId",
+      message: "What is the managers employee ID?",
+    },
+    {
+      type: "input",
+      name: "managerOffice",
+      message: "What is the managers office number?",
+    },
+    {
+      type: "input",
+      name: "engineerName",
+      message: "What is the engineers name?",
+    },
+    {
+      type: "input",
+      name: "engineerEmail",
+      message: "What is the engineers Email?",
+    },
+    {
+      type: "input",
+      name: "engineerId",
+      message: "What is the engineers employee ID?",
+    },
+    {
+      type: "input",
+      name: "engineerGitHub",
+      message: "What is the engineers GitHub username?",
+    },
     // {
     //   type: "input",
     //   name: "internName",

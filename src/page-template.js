@@ -1,31 +1,52 @@
 
-const managerInfo = aboutManager => {
-  if (!aboutManager){
-    return ""
-  } return `
-  <section class="card row" style="width: 18rem;">
-  <div class="">
-      <div class="card-body">
-          <h5 class="card-title">${aboutManager}</h5>
-      <ul class="list-group list-group-flush">
-          <li class="list-group-item">Email:${managerEmail}</li>
-          <li class="list-group-item">ID:${aboutManager}</li>
-          <li class="list-group-item">Office:</li>
-      </ul>
-      </div>
-  </div>
-</section>
+const managerInfo = (aboutManager) => {
+  // if (!name,email){
+  //   return ""
+  // } 
+  const {managerName, managerEmail, managerId, managerOffice}= aboutManager
+  
+  return `
+    <section class="card row" style="width: 18rem;">
+    <div class="">
+        <div class="card-body">
+        
+            <h5 class="card-title">${managerName}</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Email:${managerEmail}</li>
+            <li class="list-group-item">ID:${managerId}</li>
+            <li class="list-group-item">Office:${managerOffice}</li>
+        </ul>
+        </div>
+    </div>
+  </section>
   `
 }
-// const generatePage = (data) => {
-//     const finalPage = `
 
-//     `;
-//     return finalPage
-//   };
+const engineerInfo = (aboutEngineer) => {
+  // if (!name,email){
+  //   return ""
+  // } 
+  const {engineerName, engineerEmail, engineerId, engineerOffice}= aboutEngineer
+  
+  return `
+    <section class="card row" style="width: 18rem;">
+    <div class="">
+        <div class="card-body">
+        
+            <h5 class="card-title">${engineerName}</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Email:${engineerEmail}</li>
+            <li class="list-group-item">ID:${engineerId}</li>
+            <li class="list-group-item">Office:${engineerOffice}</li>
+        </ul>
+        </div>
+    </div>
+  </section>
+  `
+}
 
-  module.exports = generatePage =>{
-    const {managerName, managerEmail} = generatePage
+  module.exports = generatePage = (answers)=>{
+    // const {managerName, managerEmail} = answers
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +66,8 @@ const managerInfo = aboutManager => {
         </h1>
     </header>
      <main class="container d-flex justify-content-center">
-      ${managerInfo(managerName, managerEmail)}
+      ${managerInfo(answers)}
+      ${engineerInfo(aboutEngineer)}
        
         </main>   
 </body>
@@ -53,18 +75,17 @@ const managerInfo = aboutManager => {
 `
   }
 
-//   <section class="card row" style="width: 18rem;">
-//   <div class="">
-//       <div class="card-body">
-//       ${aboutManager
-//       .map({name, Id, email, office})
-//       }
-//           <h5 class="card-title">${name}</h5>
-//       <ul class="list-group list-group-flush">
-//           <li class="list-group-item">Email:${email}</li>
-//           <li class="list-group-item">ID:${Id}</li>
-//           <li class="list-group-item">Office:${office}</li>
-//       </ul>
-//       </div>
-//   </div>
-// </section>
+
+
+{/* <section class="card row" style="width: 18rem;">
+<div class="">
+    <div class="card-body">
+        <h5 class="card-title">${aboutManager}</h5>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email:${aboutManager}</li>
+        <li class="list-group-item">ID:${aboutManager}</li>
+        <li class="list-group-item">Office:</li>
+    </ul>
+    </div>
+</div>
+</section> */}
