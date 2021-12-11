@@ -8,8 +8,8 @@ const managerInfo = aboutManager => {
       <div class="card-body">
           <h5 class="card-title">${aboutManager}</h5>
       <ul class="list-group list-group-flush">
-          <li class="list-group-item">Email:</li>
-          <li class="list-group-item">ID:</li>
+          <li class="list-group-item">Email:${managerEmail}</li>
+          <li class="list-group-item">ID:${aboutManager}</li>
           <li class="list-group-item">Office:</li>
       </ul>
       </div>
@@ -17,15 +17,15 @@ const managerInfo = aboutManager => {
 </section>
   `
 }
-const generatePage = (data) => {
-    const finalPage = `
+// const generatePage = (data) => {
+//     const finalPage = `
 
-    `;
-    return finalPage
-  };
+//     `;
+//     return finalPage
+//   };
 
   module.exports = generatePage =>{
-    const {managerName} = generatePage
+    const {managerName, managerEmail} = generatePage
     return `
     <!DOCTYPE html>
 <html lang="en">
@@ -45,10 +45,26 @@ const generatePage = (data) => {
         </h1>
     </header>
      <main class="container d-flex justify-content-center">
-      ${managerInfo(managerName)}
+      ${managerInfo(managerName, managerEmail)}
        
         </main>   
 </body>
 </html>
 `
   }
+
+//   <section class="card row" style="width: 18rem;">
+//   <div class="">
+//       <div class="card-body">
+//       ${aboutManager
+//       .map({name, Id, email, office})
+//       }
+//           <h5 class="card-title">${name}</h5>
+//       <ul class="list-group list-group-flush">
+//           <li class="list-group-item">Email:${email}</li>
+//           <li class="list-group-item">ID:${Id}</li>
+//           <li class="list-group-item">Office:${office}</li>
+//       </ul>
+//       </div>
+//   </div>
+// </section>

@@ -39,11 +39,11 @@ async function myTeamInfo() {
       name: "managerName",
       message: "What is the managers name?",
     },
-    // {
-    //   type: "input",
-    //   name: "managerEmail",
-    //   message: "What is the managers Email?",
-    // },
+    {
+      type: "input",
+      name: "managerEmail",
+      message: "What is the managers Email?",
+    },
     // {
     //   type: "input",
     //   name: "managerId",
