@@ -1,3 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
 header{
     height: 100px;
+}
+
+
+.about{
+    margin-bottom: 27px;
+}
+
+h6{
+    margin-bottom: 2px;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: tomato;
 }

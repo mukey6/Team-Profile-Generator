@@ -2,40 +2,35 @@
 // const fs = require("fs/promises");
 // const generatePage = require('./src/page-template.js');
 
-
 // const [name, github, school,employeeId] = profileDataArgs;
 
 //   console.log(generatePage('muktar', 'mukey6', 'UofM', '1234'))
 //   fs.writeFile('./index.html', generatePage(name, github, school,employeeId), err => {
 //     if (err) throw new Error(err);
-  
+
 //     console.log('Portfolio complete! Check out index.html to see the output!');
 //   });
 
-
-
 const fs = require("fs/promises");
 const inquirer = require("inquirer");
-const Manager = require("./lib/Manager");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
-const generatePage = require('./src/page-template')
+const generatePage = require("./src/page-template");
+
 
 // await fs.writeFile(locationofFile, dataInput, )
 
+let managers;
+let engineers = [];
+let interns = [];
+
 async function writeToFile(fileName, data) {
-    try {
-      const fileWritten = await fs.writeFile(`./${fileName}.html`, data);
-      console.log("yay it worked", fileWritten);
-    } catch (error) {
-      console.log(err);
-    }
+  try {
+    const fileWritten = await fs.writeFile(`./${fileName}.html`, data);
+  } catch (error) {
+    console.log(err);
   }
-
-  
-
-async function myTeamInfo() {
-  const questions = [
+}
+async function manager() {
+  const managerAnswers = await inquirer.prompt([
     {
       type: "input",
       name: "managerName",
@@ -57,6 +52,28 @@ async function myTeamInfo() {
       message: "What is the managers office number?",
     },
     {
+      type: "list",
+      name: "nextEmployee",
+      message: "what would you like to add next?",
+      choices: ["intern", "engineer", "no more employee needed"],
+      default: [2],
+    },
+    // get answer from the prompt
+  ]);
+  managers = managerAnswers;
+  console.log("manger", managers);
+  if (managerAnswers.nextEmployee === "intern") {
+    intern();
+  } else if (managerAnswers.nextEmployee === "engineer") {
+    engineer();
+  } else {
+    myTeamInfo();
+  }
+}
+
+async function engineer() {
+  const engineerAnswers = await inquirer.prompt([
+    {
       type: "input",
       name: "engineerName",
       message: "What is the engineers name?",
@@ -76,34 +93,81 @@ async function myTeamInfo() {
       name: "engineerGitHub",
       message: "What is the engineers GitHub username?",
     },
-    // {
-    //   type: "input",
-    //   name: "internName",
-    //   message: "What is the interns name?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "internEmail",
-    //   message: "What is the interns Email?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "internId",
-    //   message: "What is the interns employee ID?",
-    // },
-    // {
-    //   type: "input",
-    //   name: "internSchool",
-    //   message: "What is the interns school?",
-    // }
-  ];
+    {
+      type: "list",
+      name: "nextEmployee",
+      message: "what would you like to add next?",
+      choices: ["intern", "engineer", "no more employee needed"],
+      default: [2],
+    },
+  ]);
+  engineers.push(engineerAnswers);
 
-  const answers = await inquirer.prompt(questions)
-  console.log(answers)
-const pageCreation = generatePage(answers)
-console.log(pageCreation)
-writeToFile('index', pageCreation)
+  console.log("engineer", engineers);
+  if (engineerAnswers.nextEmployee === "intern") {
+    intern();
+  } else if (engineerAnswers.nextEmployee === "engineer") {
+    engineer();
+  } else {
+    myTeamInfo();
+  }
+}
+async function intern() {
+  const internAnswers = await inquirer.prompt([
+    {
+      type: "input",
+      name: "internName",
+      message: "What is the interns name?",
+    },
+    {
+      type: "input",
+      name: "internEmail",
+      message: "What is the interns Email?",
+    },
+    {
+      type: "input",
+      name: "internId",
+      message: "What is the interns employee ID?",
+    },
+    {
+      type: "input",
+      name: "internSchool",
+      message: "What is the interns school?",
+    },
+    {
+      type: "list",
+      name: "nextEmployee",
+      message: "what would you like to add next?",
+      choices: ["intern", "engineer", "no more employee needed"],
+      default: [2],
+    },
+  ]);
+  interns.push(internAnswers);
+  console.log("intern", interns);
+  if (internAnswers.nextEmployee === "intern") {
+    console.log("intern" + internAnswers);
+    intern();
+  } else if (internAnswers.nextEmployee === "engineer") {
+    engineer();
+  } else {
+    myTeamInfo();
+  }
 }
 
+async function myTeamInfo() {
+  console.log("getting to teaminfo");
+  console.log(managers, engineers, interns);
+  const pageCreation = await generatePage(managers, engineers, interns);
 
-myTeamInfo()
+  console.log(pageCreation);
+  await writeToFile("index", pageCreation);
+}
+manager();
+
+// myTeamInfo()
+
+// const answers = await inquirer.prompt(questions)
+// console.log(answers)
+// const pageCreation = generatePage(answers)
+// console.log(pageCreation)
+// writeToFile('index', pageCreation)
