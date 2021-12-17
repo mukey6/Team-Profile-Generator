@@ -45,7 +45,8 @@ const prompts = {
        {
            type: 'confirm',
            name:'continue',
-           message:'do you want to add more?'
+           message:'do you want to add more?',
+           
        }
    ]
 }

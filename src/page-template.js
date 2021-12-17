@@ -1,32 +1,39 @@
 const managerInfo = (managers) => {
-  if (!managers) {
+  if (managers.length === 0) {
     return "";
   }
 
-  const { managerName, managerEmail, managerId, managerOffice } = managers;
 
   return `
-  <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
-  <div class="">
-        <div class="card-body">
-        <div class=" about bg-primary text-white text-center">
-        <h4 class="card-title">${managerName}</h4>
-              <h5>Manager
-              <span class="oi oi-laptop"></span>  
-              </h5>
+  ${managers.map(
+    ({ role, name, email, employeeId, office }) => {
+      return `
+      <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
+          <div class="">
+            <div class="card-body">
+            <div class=" about bg-secondary bg-opacity-50 text-black text-center">
+            <h4 class="card-title">${name}</h4>
+            <h5>${role}
+            <span class="oi oi-monitor"></span>
+            </h5>
+          </div>           
+             <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Email: 
+                    <a href="mailto:${email}">${email}</a>
+                  </li>
+                <li class="list-group-item">ID:${employeeId}</li>
+                <li class="list-group-item">Office:${office}</li>
+                </li>
+           </ul>
             </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-            Email: 
-            <a href="mailto:${managerEmail}">${managerEmail}</a>
-          </li>
-            <li class="list-group-item">ID:${managerId}</li>
-            <li class="list-group-item">Office:${managerOffice}</li>
-        </ul>
-        </div>
-    </div>
-  </section>
-  `;
+          </div>
+        </section>
+      `;
+    }
+  )}
+ `;
+
 };
 
 const engineerInfo = (engineers) => {
@@ -37,26 +44,26 @@ const engineerInfo = (engineers) => {
 
   return `
   ${engineers.map(
-    ({ engineerName, engineerEmail, engineerId, engineerGitHub }) => {
+    ({ role, name, email, employeeId, github }) => {
       return `
       <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
           <div class="">
             <div class="card-body">
-            <div class=" about bg-primary text-white text-center">
-            <h4 class="card-title">${engineerName}</h4>
-            <h5>Engineer
-            <span class="oi oi-monitor"></span>
+            <div class=" about bg-secondary bg-opacity-50 text-black text-center">
+            <h4 class="card-title">${name}</h4>
+            <h5>${role}
+            <span class="oi oi-laptop"></span>
             </h5>
           </div>           
              <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     Email: 
-                    <a href="mailto:${engineerEmail}">${engineerEmail}</a>
+                    <a href="mailto:${email}">${email}</a>
                   </li>
-                <li class="list-group-item">ID:${engineerId}</li>
+                <li class="list-group-item">ID:${employeeId}</li>
                 <li class="list-group-item">
                 GitHub: 
-                <a href="https://github.com/${engineerGitHub}" target="_blank" >${engineerGitHub}</a>
+                <a href="https://github.com/${github}" target="_blank" >${github}</a>
               </li>
            </ul>
             </div>
@@ -76,24 +83,24 @@ const internInfo = (aboutIntern) => {
 
   return `
   ${aboutIntern.map(
-    ({internName, internEmail, internId, internSchool}) =>{
+    ({role, name, email, employeeId,school}) =>{
       return `
       <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
       <div class="">
           <div class="card-body">
-          <div class=" about bg-primary text-white text-center">
-          <h4 class="card-title">${internName}</h4>
-            <h5>Intern
+          <div class=" about bg-secondary bg-opacity-50 text-black text-center">
+          <h4 class="card-title">${name}</h4>
+            <h5>${role}
             <span class="oi oi-person"></span>
             </h5>
         </div> 
           <ul class="list-group list-group-flush">
               <li class="list-group-item">
               Email: 
-              <a href="mailto:${internEmail}">${internEmail}</a>
+              <a href="mailto:${email}">${email}</a>
             </li>
-              <li class="list-group-item">ID:${internId}</li>
-              <li class="list-group-item">School:${internSchool}</li>
+              <li class="list-group-item">ID:${employeeId}</li>
+              <li class="list-group-item">School:${school}</li>
           </ul>
           </div>
       </div>
@@ -128,9 +135,7 @@ module.exports = generatePage = async (managers, engineers, interns) => {
     </header>
      <main class="container d-flex justify-content-center">
      <section class="row d-flex justify-content-center"> 
-      ${managerInfo(managers)}
-      ${engineerInfo(engineers)}
-      ${internInfo(interns)} 
+      ${managerInfo(managers)}  ${engineerInfo(engineers)} ${internInfo(interns)} 
         </main>   
      </section>   
 </body>
