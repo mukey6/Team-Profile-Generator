@@ -10,7 +10,7 @@ const interns = [];
 
 async function writeToFile(fileName, data) {
   try {
-    const fileWritten = await fs.writeFile(`./${fileName}.html`, data);
+    const fileWritten = await fs.writeFile(`./dist/${fileName}.html`, data);
   } catch (error) {
     console.log(err);
   }
