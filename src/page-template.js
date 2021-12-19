@@ -3,7 +3,6 @@ const managerInfo = (managers) => {
     return "";
   }
 
-
   return `
   ${managers.map(
     ({ role, name, email, employeeId, office }) => {
@@ -71,7 +70,7 @@ const engineerInfo = (engineers) => {
         </section>
       `;
     }
-  )}
+  ).join('')}
  `;
 };
 
@@ -105,10 +104,11 @@ const internInfo = (aboutIntern) => {
           </div>
       </div>
     </section>
-      `
-    }
-  )}
+    `
+  }
+  ).join('')}
   `;
+  
 };
 
 module.exports = generatePage = async (managers, engineers, interns) => {
@@ -135,7 +135,9 @@ module.exports = generatePage = async (managers, engineers, interns) => {
     </header>
      <main class="container d-flex justify-content-center">
      <section class="row d-flex justify-content-center"> 
-      ${managerInfo(managers)}  ${engineerInfo(engineers)} ${internInfo(interns)} 
+      ${managerInfo(managers)}  
+      ${engineerInfo(engineers)}
+      ${internInfo(interns)} 
         </main>   
      </section>   
 </body>

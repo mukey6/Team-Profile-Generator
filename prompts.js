@@ -5,7 +5,7 @@ const prompts = {
             type:"list",
             name:"role",
             message: "what is the role?",
-            choices:['manager', 'engineer', 'intern']
+            choices:['engineer', 'intern',]
         },
        {
            type: "input",
