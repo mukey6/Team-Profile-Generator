@@ -1,5 +1,4 @@
 const managerInfo = (managers) => {
-  // const {role, name, email, employeeId, officeNumber} = managers
 
   return `
       <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
@@ -30,11 +29,10 @@ const engineerInfo = (engineers) => {
   if (engineers.length === 0) {
     return "";
   }
-  // const { engineerName, engineerEmail, engineerId, engineerGitHub } = aboutEngineer;
 
   return `
-  ${engineers.map(
-    ({ role, name, email, employeeId, github }) => {
+  ${engineers
+    .map(({ role, name, email, employeeId, github }) => {
       return `
       <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
           <div class="">
@@ -50,7 +48,7 @@ const engineerInfo = (engineers) => {
                 Email: 
                 <a href="mailto:${email}">${email}</a>
                   </li>
-                <li class="list-group-item">ID:${employeeId}</li>
+                <li class="list-group-item">ID: ${employeeId}</li>
                 <li class="list-group-item">
                 GitHub: 
                 <a href="https://github.com/${github}" target="_blank" >${github}</a>
@@ -60,19 +58,19 @@ const engineerInfo = (engineers) => {
           </div>
         </section>
       `;
-    }
-  ).join('')}
+    })
+    .join("")}
  `;
 };
 
 const internInfo = (aboutIntern) => {
-  if (!aboutIntern){
-    return ""
+  if (!aboutIntern) {
+    return "";
   }
 
   return `
-  ${aboutIntern.map(
-    ({role, name, email, employeeId,school}) =>{
+  ${aboutIntern
+    .map(({ role, name, email, employeeId, school }) => {
       return `
       <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
       <div class="">
@@ -88,21 +86,19 @@ const internInfo = (aboutIntern) => {
               Email: 
               <a href="mailto:${email}">${email}</a>
             </li>
-              <li class="list-group-item">ID:${employeeId}</li>
-              <li class="list-group-item">School:${school}</li>
+              <li class="list-group-item">ID: ${employeeId}</li>
+              <li class="list-group-item">School: ${school}</li>
           </ul>
           </div>
       </div>
     </section>
-    `
-  }
-  ).join('')}
+    `;
+    })
+    .join("")}
   `;
-  
 };
 
 module.exports = generatePage = async (managers, engineers, interns) => {
-
   // const {managerName, managerEmail} = answers
   return `
 <!DOCTYPE html>
@@ -135,18 +131,3 @@ module.exports = generatePage = async (managers, engineers, interns) => {
 </html>
 `;
 };
-
-{
-  /* <section class="card row" style="width: 18rem;">
-<div class="">
-    <div class="card-body">
-        <h4 class="card-title">${aboutManager}</h4>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Email:${aboutManager}</li>
-        <li class="list-group-item">ID:${aboutManager}</li>
-        <li class="list-group-item">Office:</li>
-    </ul>
-    </div>
-</div>
-</section> */
-}

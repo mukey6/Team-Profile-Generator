@@ -4,6 +4,10 @@ const generatePage = require("./src/page-template");
 const prompts = require("./prompts");
 const Manager = require("./lib/Manager");
 
+const managers = [];
+const engineers = [];
+const interns = [];
+
 async function writeToFile(fileName, data) {
   try {
     const fileWritten = await fs.writeFile(`./${fileName}.html`, data);
@@ -13,7 +17,7 @@ async function writeToFile(fileName, data) {
 }
 
 async function manager() {
-  const {name, email, employeeId, officeNumber} = await inquirer.prompt([
+  const { name, email, employeeId, officeNumber } = await inquirer.prompt([
     {
       type: "input",
       name: "name",
@@ -33,17 +37,13 @@ async function manager() {
       type: "input",
       name: "officeNumber",
       message: `What is the manager's office number?`,
-    }
+    },
   ]);
   const manager = new Manager(name, email, employeeId, officeNumber);
   managers.push(manager);
 
   getRolePrompt();
 }
-
-const managers = [];
-const engineers = [];
-const interns = [];
 
 manager();
 
@@ -59,7 +59,6 @@ async function getRolePrompt() {
   if (continueQuestions.continue) {
     getRolePrompt();
   } else {
-
     console.log("you have selected no more employees");
     const pageCreation = await generatePage(managers, engineers, interns);
     await writeToFile("index", pageCreation);

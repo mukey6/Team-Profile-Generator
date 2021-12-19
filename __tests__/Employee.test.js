@@ -1,13 +1,8 @@
 const Employee = require('../lib/Employee');
 
 describe ("an employee ", ()=>{
-    managerProperty = {
-        name: 'Dave',
-        email:'dave@gmail.com',
-        employeeId:'123456',
-        
-    }
-const employee = new Employee(managerProperty)
+
+    const employee = new Employee('Dave', 'dave@gmail.com', '123456')
 test('will have a name Dave',() =>{
     expect(employee.name).toBe('Dave')
     expect(employee.getName()).toBe('Dave')
