@@ -1,38 +1,29 @@
 const managerInfo = (managers) => {
-  if (managers.length === 0) {
-    return "";
-  }
+  // const {role, name, email, employeeId, officeNumber} = managers
 
   return `
-  ${managers.map(
-    ({ role, name, email, employeeId, office }) => {
-      return `
       <section class="card col-3 mb-2 m ms-2" style="width: 18rem;">
           <div class="">
             <div class="card-body">
             <div class=" about bg-secondary bg-opacity-50 text-black text-center">
-            <h4 class="card-title">${name}</h4>
-            <h5>${role}
+            <h4 class="card-title">${managers[0].name}</h4>
+            <h5>${managers[0].role}
             <span class="oi oi-monitor"></span>
             </h5>
           </div>           
              <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     Email: 
-                    <a href="mailto:${email}">${email}</a>
+                    <a href="mailto:${managers[0].email}">${managers[0].email}</a>
                   </li>
-                <li class="list-group-item">ID:${employeeId}</li>
-                <li class="list-group-item">Office:${office}</li>
+                <li class="list-group-item">ID:${managers[0].employeeId}</li>
+                <li class="list-group-item">Office:${managers[0].officeNumber}</li>
                 </li>
            </ul>
             </div>
           </div>
         </section>
-      `;
-    }
-  )}
  `;
-
 };
 
 const engineerInfo = (engineers) => {
@@ -56,8 +47,8 @@ const engineerInfo = (engineers) => {
           </div>           
              <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    Email: 
-                    <a href="mailto:${email}">${email}</a>
+                Email: 
+                <a href="mailto:${email}">${email}</a>
                   </li>
                 <li class="list-group-item">ID:${employeeId}</li>
                 <li class="list-group-item">
@@ -78,7 +69,6 @@ const internInfo = (aboutIntern) => {
   if (!aboutIntern){
     return ""
   }
-  // const { internName, internEmail, internId, internSchool } = aboutInter;
 
   return `
   ${aboutIntern.map(
@@ -112,6 +102,7 @@ const internInfo = (aboutIntern) => {
 };
 
 module.exports = generatePage = async (managers, engineers, interns) => {
+
   // const {managerName, managerEmail} = answers
   return `
 <!DOCTYPE html>
@@ -138,8 +129,8 @@ module.exports = generatePage = async (managers, engineers, interns) => {
       ${managerInfo(managers)}  
       ${engineerInfo(engineers)}
       ${internInfo(interns)} 
-        </main>   
-     </section>   
+      </section>   
+      </main>   
 </body>
 </html>
 `;
