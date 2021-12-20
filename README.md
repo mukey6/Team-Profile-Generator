@@ -16,7 +16,7 @@
 
 ## Usage
 
-in the main directory run node index in the terminal to start application. For demo, click [here]()
+in the main directory run node index in the terminal to start application. For demo, click [here](https://watch.screencastify.com/v/SEmBPWZCXEAq8wC90Pqm)
 
 ![Team Profile Screenshot](./assets/images/team-info.png)
 
